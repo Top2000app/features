@@ -40,6 +40,12 @@ public class TrackInformationRequestHandler : IRequestHandler<TrackInformationRe
             previous = listing;
         }
 
-        return new TrackDetails(track.Title, track.Artist, track.RecordedYear, listings.ToImmutableSortedSet(new ListingInformationDescendingComparer()));
+        return new TrackDetails
+        {
+            Title = track.Title,
+            Artist = track.Artist,
+            RecordedYear = track.RecordedYear,
+            Listings = new SortedSet<ListingInformation>(listings, new ListingInformationDescendingComparer()),
+        };
     }
 }

@@ -8,10 +8,10 @@ public class SortByTitleTests
     [TestMethod]
     public void SortByTitleSortTheTracksTitleAlphabetically()
     {
-        var trackA = new Track { Title = "A" };
-        var trackB = new Track { Title = "B" };
-        var trackC = new Track { Title = "C" };
-        var trackD = new Track { Title = "D" };
+        var trackA = new SearchedTrack { Title = "A" };
+        var trackB = new SearchedTrack { Title = "B" };
+        var trackC = new SearchedTrack { Title = "C" };
+        var trackD = new SearchedTrack { Title = "D" };
 
         var tracks = new[] { trackB, trackD, trackC, trackA };
 

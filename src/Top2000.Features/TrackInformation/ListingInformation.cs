@@ -8,14 +8,9 @@ public class ListingInformation
 
     public DateTime? PlayUtcDateAndTime { get; set; }
 
-    public DateTime? LocalUtcDateAndTime
-    {
-        get
-        {
-            if (PlayUtcDateAndTime is null) return null;
-            return DateTime.SpecifyKind((DateTime)PlayUtcDateAndTime, DateTimeKind.Utc).ToLocalTime();
-        }
-    }
+    public DateTime? LocalUtcDateAndTime => PlayUtcDateAndTime is DateTime utcDateTime
+        ? DateTime.SpecifyKind(utcDateTime, DateTimeKind.Utc).ToLocalTime()
+        : null;
 
     public int? Offset { get; set; }
 

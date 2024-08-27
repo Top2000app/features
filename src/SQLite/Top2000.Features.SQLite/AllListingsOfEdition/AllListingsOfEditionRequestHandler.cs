@@ -2,7 +2,7 @@
 
 namespace Top2000.Features.SQLite.AllListingsOfEdition;
 
-public class AllListingsOfEditionRequestHandler : IRequestHandler<AllListingsOfEditionRequest, ImmutableHashSet<TrackListing>>
+public class AllListingsOfEditionRequestHandler : IRequestHandler<AllListingsOfEditionRequest, HashSet<TrackListing>>
 {
     private readonly SQLiteAsyncConnection connection;
     private readonly TrackCountHolder trackCountHolder;
@@ -13,7 +13,7 @@ public class AllListingsOfEditionRequestHandler : IRequestHandler<AllListingsOfE
         this.trackCountHolder = trackCountHolder;
     }
 
-    public async Task<ImmutableHashSet<TrackListing>> Handle(AllListingsOfEditionRequest request, CancellationToken cancellationToken)
+    public async Task<HashSet<TrackListing>> Handle(AllListingsOfEditionRequest request, CancellationToken cancellationToken)
     {
         var counters = await trackCountHolder.CountTrackCountForEditionAsync(connection, request.Year);
 
@@ -34,6 +34,6 @@ public class AllListingsOfEditionRequestHandler : IRequestHandler<AllListingsOfE
             }
         }
 
-        return items.ToImmutableHashSet(new TrackListingComparer());
+        return items.ToHashSet(new TrackListingComparer());
     }
 }

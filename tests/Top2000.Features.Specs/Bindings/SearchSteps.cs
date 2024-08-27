@@ -7,7 +7,7 @@ namespace Top2000.Features.Specs.Bindings;
 [Binding]
 public class SearchSteps
 {
-    private ReadOnlyCollection<IGrouping<string, Track>> result;
+    private List<IGrouping<string, SearchedTrack>> result;
     private readonly IGroup grouping = new GroupByNothing();
     private readonly ISort sorting = new SortByTitle();
     private readonly IMediator mediator = App.GetService<IMediator>();
@@ -16,7 +16,13 @@ public class SearchSteps
     public async Task WhenSearchingFor(string queryString)
     {
         var latestEdition = await GetLatestEditionAsync();
-        var request = new SearchTrackRequest(queryString, latestEdition, sorting, grouping);
+        var request = new SearchTrackRequest
+        {
+            QueryString = queryString,
+            LatestYear = latestEdition,
+            Sorting = sorting,
+            Grouping = grouping,
+        };
 
         result = await mediator.Send(request);
     }
@@ -25,7 +31,13 @@ public class SearchSteps
     public async Task WhenSearchingWithoutAQuery()
     {
         var latestEdition = await GetLatestEditionAsync();
-        var request = new SearchTrackRequest(string.Empty, latestEdition, sorting, grouping);
+        var request = new SearchTrackRequest
+        {
+            QueryString = string.Empty,
+            LatestYear = latestEdition,
+            Sorting = sorting,
+            Grouping = grouping,
+        };
 
         result = await mediator.Send(request);
     }
@@ -34,7 +46,7 @@ public class SearchSteps
     public void ThenTracksAreFoundWithTheFollowingDetails(Table table)
     {
         var expected = table
-            .CreateSet<Track>()
+            .CreateSet<SearchedTrack>()
             .Select(x => new TrackForAssertion
             {
                 Id = x.Id,

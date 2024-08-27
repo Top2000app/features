@@ -1,5 +1,5 @@
 ﻿namespace Top2000.Features.AllEditions;
 
-public class AllEditionsRequest : IRequest<ImmutableSortedSet<Edition>>
+public sealed class AllEditionsRequest : IRequest<SortedSet<Edition>>
 {
 }

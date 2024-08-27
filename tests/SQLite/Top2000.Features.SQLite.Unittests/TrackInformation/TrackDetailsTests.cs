@@ -26,8 +26,8 @@ namespace Top2000.Features.SQLite.Unittests.TrackInformation
             listing2004 = new ListingInformation { Edition = 2004, Position = 9, Status = ListingStatus.Increased };
             listing2005 = new ListingInformation { Edition = 2005, Status = ListingStatus.NotListed };
 
-            var set = new List<ListingInformation>
-            {
+            var set = new SortedSet<ListingInformation>(
+            [
                 listing1999,
                 listing2000,
                 listing2001,
@@ -35,9 +35,15 @@ namespace Top2000.Features.SQLite.Unittests.TrackInformation
                 listing2003,
                 listing2004,
                 listing2005
-            }.ToImmutableSortedSet(new ListingInformationDescendingComparer());
+            ],new ListingInformationDescendingComparer());
 
-            sut = new TrackDetails("unit_title", "unit_artist", 2000, set);
+            sut = new TrackDetails
+            {
+                Title = "unit_title",
+                Artist = "unit_artist",
+                RecordedYear = 2000,
+                Listings = set
+            };
         }
 
         [TestMethod]

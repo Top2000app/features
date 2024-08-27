@@ -2,10 +2,5 @@
 
 public class TrackInformationRequest : IRequest<TrackDetails>
 {
-    public TrackInformationRequest(int trackId)
-    {
-        TrackId = trackId;
-    }
-
-    public int TrackId { get; }
+    public required int TrackId { get; init; }
 }

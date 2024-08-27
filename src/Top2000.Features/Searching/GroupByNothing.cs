@@ -1,8 +1,8 @@
 ﻿namespace Top2000.Features.Searching;
 
-public class GroupByNothing : IGroup
+public sealed class GroupByNothing : IGroup
 {
-    public IEnumerable<IGrouping<string, Track>> Group(IEnumerable<Track> tracks)
+    public IEnumerable<IGrouping<string, SearchedTrack>> Group(IEnumerable<SearchedTrack> tracks)
     {
         return tracks.GroupBy(x => "" + tracks.Count());
     }

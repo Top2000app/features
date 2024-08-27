@@ -8,11 +8,11 @@ public class GroupByArtistTests
     [TestMethod]
     public void GroupByArtistGroupsTracksByArtist()
     {
-        var trackA_1 = new Track { Artist = "A" };
-        var trackA_2 = new Track { Artist = "A" };
-        var trackC_1 = new Track { Artist = "C" };
-        var trackD_1 = new Track { Artist = "D" };
-        var trackD_2 = new Track { Artist = "D" };
+        var trackA_1 = new SearchedTrack { Artist = "A" };
+        var trackA_2 = new SearchedTrack { Artist = "A" };
+        var trackC_1 = new SearchedTrack { Artist = "C" };
+        var trackD_1 = new SearchedTrack { Artist = "D" };
+        var trackD_2 = new SearchedTrack { Artist = "D" };
 
         var tracks = new[] { trackD_2, trackA_1, trackA_2, trackC_1, trackD_1 };
         var actual = new GroupByArtist().Group(tracks);

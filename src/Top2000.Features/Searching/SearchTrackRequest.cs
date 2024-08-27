@@ -2,19 +2,10 @@
 
 namespace Top2000.Features.Searching;
 
-public class SearchTrackRequest : IRequest<ReadOnlyCollection<IGrouping<string, Track>>>
+public class SearchTrackRequest : IRequest<List<IGrouping<string, SearchedTrack>>>
 {
-    public SearchTrackRequest(string queryString, int latestYear, ISort sorting, IGroup group)
-    {
-        QueryString = queryString;
-        this.LatestYear = latestYear;
-        this.Sorting = sorting;
-        this.Grouping = group;
-    }
-
-    public string QueryString { get; }
-    public int LatestYear { get; }
-    public ISort Sorting { get; set; }
-
-    public IGroup Grouping { get; set; }
+    public required string QueryString { get; init; }
+    public required int LatestYear { get; init; }
+    public required ISort Sorting { get; init; }
+    public required IGroup Grouping { get; init; }
 }

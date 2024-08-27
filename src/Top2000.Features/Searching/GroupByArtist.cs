@@ -1,7 +1,7 @@
 ﻿namespace Top2000.Features.Searching;
 
-public class GroupByArtist : IGroup
+public sealed class GroupByArtist : IGroup
 {
-    public IEnumerable<IGrouping<string, Track>> Group(IEnumerable<Track> tracks)
+    public IEnumerable<IGrouping<string, SearchedTrack>> Group(IEnumerable<SearchedTrack> tracks)
         => tracks.GroupBy(x => x.Artist);
 }

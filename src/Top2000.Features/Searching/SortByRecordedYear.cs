@@ -1,7 +1,9 @@
 ﻿namespace Top2000.Features.Searching;
 
-public class SortByRecordedYear : ISort
+public sealed class SortByRecordedYear : ISort
 {
-    public IOrderedEnumerable<Track> Sort(IEnumerable<Track> tracks)
-        => tracks.OrderBy(x => x.RecordedYear);
+    public IOrderedEnumerable<SearchedTrack> Sort(IEnumerable<SearchedTrack> tracks)
+    {
+        return tracks.OrderBy(x => x.RecordedYear);
+    }
 }

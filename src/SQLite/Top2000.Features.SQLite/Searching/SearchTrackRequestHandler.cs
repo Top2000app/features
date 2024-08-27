@@ -4,7 +4,7 @@ using Top2000.Features.Searching;
 
 namespace Top2000.Features.SQLite.Searching;
 
-public class SearchTrackRequestHandler : IRequestHandler<SearchTrackRequest, ReadOnlyCollection<IGrouping<string, Track>>>
+public class SearchTrackRequestHandler : IRequestHandler<SearchTrackRequest, List<IGrouping<string, SearchedTrack>>>
 {
     private readonly SQLiteAsyncConnection connection;
 
@@ -13,9 +13,9 @@ public class SearchTrackRequestHandler : IRequestHandler<SearchTrackRequest, Rea
         this.connection = connection;
     }
 
-    public async Task<ReadOnlyCollection<IGrouping<string, Track>>> Handle(SearchTrackRequest request, CancellationToken cancellationToken)
+    public async Task<List<IGrouping<string, SearchedTrack>>> Handle(SearchTrackRequest request, CancellationToken cancellationToken)
     {
-        var results = new List<Track>();
+        var results = new List<SearchedTrack>();
 
         if (!string.IsNullOrWhiteSpace(request.QueryString))
         {
@@ -27,7 +27,7 @@ public class SearchTrackRequestHandler : IRequestHandler<SearchTrackRequest, Rea
                     "WHERE RecordedYear = ?" +
                     "LIMIT 100";
 
-                results = await connection.QueryAsync<Track>(sql, year);
+                results = await connection.QueryAsync<SearchedTrack>(sql, year);
             }
             else
             {
@@ -37,14 +37,12 @@ public class SearchTrackRequestHandler : IRequestHandler<SearchTrackRequest, Rea
                     "WHERE (Title LIKE ?) OR (Artist LIKE ?)" +
                     "LIMIT 100";
 
-                results = await connection.QueryAsync<Track>(sql, $"%{request.QueryString}%", $"%{request.QueryString}%");
+                results = await connection.QueryAsync<SearchedTrack>(sql, $"%{request.QueryString}%", $"%{request.QueryString}%");
             }
         }
 
         results.ForEach(x => x.LatestEdition = request.LatestYear);
         var sorted = request.Sorting.Sort(results);
-        var groupedAndSorted = request.Grouping.Group(sorted).ToList();
-
-        return groupedAndSorted.AsReadOnly();
+        return request.Grouping.Group(sorted).ToList();
     }
 }

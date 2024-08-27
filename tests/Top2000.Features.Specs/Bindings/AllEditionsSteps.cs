@@ -7,7 +7,7 @@ namespace Top2000.Features.Specs.Bindings;
 [Binding]
 public class AllEditionsSteps
 {
-    private ImmutableSortedSet<Edition> editions;
+    private SortedSet<Edition> editions;
 
     [Given(@"All data scripts")]
     public Task GivenAllDataScripts()

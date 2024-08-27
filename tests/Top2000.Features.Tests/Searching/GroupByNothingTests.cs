@@ -8,10 +8,10 @@ public class GroupByNothingTests
     [TestMethod]
     public void GroupByNothingPutsAllTrackIntoOneGroupWithTheCountAsKey()
     {
-        var trackA = new Track { };
-        var trackB = new Track { };
-        var trackC = new Track { };
-        var trackD = new Track { };
+        var trackA = new SearchedTrack { };
+        var trackB = new SearchedTrack { };
+        var trackC = new SearchedTrack { };
+        var trackD = new SearchedTrack { };
 
         var tracks = new[] { trackB, trackD, trackC, trackA };
         var actual = new GroupByNothing().Group(tracks);

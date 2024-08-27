@@ -13,7 +13,7 @@ public class TrackInformationSteps
     [When(@"the track information feature is executed for TrackId (.*)")]
     public async Task WhenTheTrackInformationFeatureIsExecutedForTrackId(int trackId)
     {
-        var request = new TrackInformationRequest(trackId);
+        var request = new TrackInformationRequest { TrackId = trackId };
 
         var mediator = App.GetService<IMediator>();
 

@@ -1,6 +1,6 @@
 ﻿namespace Top2000.Features.Searching;
 
-public class Track
+public class SearchedTrack
 {
     public int Id { get; set; }
 

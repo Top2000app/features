@@ -1,6 +1,9 @@
 ﻿namespace Top2000.Features.Searching;
 
-public class SortByArtist : ISort
+public sealed class SortByArtist : ISort
 {
-    public IOrderedEnumerable<Track> Sort(IEnumerable<Track> tracks) => tracks.OrderBy(x => x.Artist);
+    public IOrderedEnumerable<SearchedTrack> Sort(IEnumerable<SearchedTrack> tracks)
+    {
+        return tracks.OrderBy(x => x.Artist);
+    }
 }
