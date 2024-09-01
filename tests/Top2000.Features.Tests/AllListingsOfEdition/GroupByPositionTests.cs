@@ -17,20 +17,6 @@ public class GroupByPositionTests
         grouped[0].Key.Should().Be("1 - 100");
     }
 
-    private TrackListing CreateNewTrackListingWithPosition(int position)
-    {
-        return new()
-        {
-            Artist = "UnitTest",
-            Delta = 0,
-            IsRecurring = true,
-            Position = position,
-            PlayUtcDateAndTime = DateTime.UtcNow,
-            Title = "UnitTest",
-            TrackId = position,
-        };
-    }
-
     [TestMethod]
     public void Poisition99IsPutInThe1_100Group()
     {
@@ -104,5 +90,18 @@ public class GroupByPositionTests
         lastGroup.Key.Should().Be("2400 - 2500");
         lastGroup.Should().Contain(x => x.Position == 2500);
     }
-}
 
+    private static TrackListing CreateNewTrackListingWithPosition(int position)
+    {
+        return new()
+        {
+            Artist = "UnitTest",
+            Delta = 0,
+            IsRecurring = true,
+            Position = position,
+            PlayUtcDateAndTime = DateTime.UtcNow,
+            Title = "UnitTest",
+            TrackId = position,
+        };
+    }
+}
