@@ -1,4 +1,5 @@
-﻿using Top2000.Features.AllListingsOfEdition;
+﻿using System.Collections.Generic;
+using Top2000.Features.AllListingsOfEdition;
 
 namespace Top2000.Features.Specs.Bindings;
 
@@ -20,5 +21,17 @@ public class AllListingsOfEditionSteps
         var mediator = App.GetService<IMediator>();
 
         result = await mediator.Send(request);
+    }
+
+    [Then("the start of the list is {int}")]
+    public void ThenTheStartOfTheListIs(int first)
+    {
+        result.First().Position.Should().Be(first);
+    }
+
+    [Then("the end of the list is {int}")]
+    public void ThenTheEndOfTheListIs(int last)
+    {
+        result.Last().Position.Should().Be(last);
     }
 }
