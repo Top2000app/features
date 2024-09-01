@@ -12,7 +12,7 @@
     <Description>Top 2000 Features package containing the contracts for feature implementations</Description>
     <Copyright>Copyright (c) Rick Neeft Development 2024</Copyright>
     <PackageProjectUrl>https://github.com/Top2000app/data</PackageProjectUrl>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Authors>Rick Neeft</Authors>
     <Product>Top2000App</Product>
     <PackageIcon>nugeticon.png</PackageIcon>
