@@ -10,8 +10,6 @@ public class TrackListing
 
     public bool IsRecurring { get; set; }
 
-    public DateTime LocalPlayDateAndTime => DateTime.SpecifyKind(PlayUtcDateAndTime, DateTimeKind.Utc).ToLocalTime();
-
     public DateTime PlayUtcDateAndTime { get; set; }
 
     public string Title { get; set; } = string.Empty;

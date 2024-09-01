@@ -21,7 +21,8 @@ public class AllListingsOfEditionRequestHandler : IRequestHandler<AllListingsOfE
                   "SELECT Listing.TrackId, Listing.Position, (p.Position - Listing.Position) AS Delta, Listing.PlayUtcDateAndTime, Title, Artist " +
                   "FROM Listing JOIN Track ON Listing.TrackId = Id " +
                   "LEFT JOIN Listing as p ON p.TrackId = Id AND p.Edition = ? " +
-                  $"WHERE Listing.Edition = ?";
+                  "WHERE Listing.Edition = ? " +
+                  "ORDER BY Listing.Position";
 
         var items = await connection.QueryAsync<TrackListing>(sql, request.Year - 1, request.Year);
         var itemWithNullDelta = items.Where(x => x.Delta is null);
