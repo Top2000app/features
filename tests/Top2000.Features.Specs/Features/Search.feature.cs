@@ -47,7 +47,7 @@ namespace Top2000.Features.Specs.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static async System.Threading.Tasks.Task FeatureSetupAsync(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = global::Reqnroll.TestRunnerManager.GetTestRunnerForAssembly(null, System.Threading.Thread.CurrentThread.ManagedThreadId.ToString());
+            testRunner = global::Reqnroll.TestRunnerManager.GetTestRunnerForAssembly();
             global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Search", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
             await testRunner.OnFeatureStartAsync(featureInfo);
         }
@@ -56,6 +56,7 @@ namespace Top2000.Features.Specs.Features
         public static async System.Threading.Tasks.Task FeatureTearDownAsync()
         {
             await testRunner.OnFeatureEndAsync();
+            global::Reqnroll.TestRunnerManager.ReleaseTestRunner(testRunner);
             testRunner = null;
         }
         
