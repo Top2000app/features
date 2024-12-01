@@ -1,0 +1,48 @@
+name: .NET
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    
+    - name: Pack
+      run: dotnet pack -o '${{github.workspace}}/nupkg'
+    
+    - name: Publish App disk artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Code
+        path: nupkg
+      if: github.event_name != 'pull_request'
+
+    - name: Publish Nuget
+      run: dotnet nuget push '${{github.workspace}}/nupkg/*.nupkg' -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+      if: github.event_name != 'pull_request'
+  

@@ -23,11 +23,13 @@ namespace Top2000.Features.Specs.Features
     public partial class SearchFeature
     {
         
-        private static global::Reqnroll.ITestRunner testRunner;
+        private global::Reqnroll.ITestRunner testRunner;
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
         private static string[] featureTags = ((string[])(null));
+        
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Search", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
 #line 1 "Search.feature"
 #line hidden
@@ -47,26 +49,25 @@ namespace Top2000.Features.Specs.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static async System.Threading.Tasks.Task FeatureSetupAsync(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = global::Reqnroll.TestRunnerManager.GetTestRunnerForAssembly();
-            global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Search", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
-            await testRunner.OnFeatureStartAsync(featureInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute(Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupBehavior.EndOfClass)]
         public static async System.Threading.Tasks.Task FeatureTearDownAsync()
         {
-            await testRunner.OnFeatureEndAsync();
-            global::Reqnroll.TestRunnerManager.ReleaseTestRunner(testRunner);
-            testRunner = null;
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public async System.Threading.Tasks.Task TestInitializeAsync()
         {
+            testRunner = global::Reqnroll.TestRunnerManager.GetTestRunnerForAssembly(featureHint: featureInfo);
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "Search")))
+                        && (testRunner.FeatureContext.FeatureInfo.Equals(featureInfo) == false)))
             {
-                await global::Top2000.Features.Specs.Features.SearchFeature.FeatureSetupAsync(null);
+                await testRunner.OnFeatureEndAsync();
+            }
+            if ((testRunner.FeatureContext == null))
+            {
+                await testRunner.OnFeatureStartAsync(featureInfo);
             }
         }
         
@@ -74,6 +75,7 @@ namespace Top2000.Features.Specs.Features
         public async System.Threading.Tasks.Task TestTearDownAsync()
         {
             await testRunner.OnScenarioEndAsync();
+            global::Reqnroll.TestRunnerManager.ReleaseTestRunner(testRunner);
         }
         
         public void ScenarioInitialize(global::Reqnroll.ScenarioInfo scenarioInfo)
@@ -93,13 +95,13 @@ namespace Top2000.Features.Specs.Features
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Track can be searching by title")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Tracks can be searched by the counter part of a special character")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Search")]
-        public async System.Threading.Tasks.Task TrackCanBeSearchingByTitle()
+        public async System.Threading.Tasks.Task TracksCanBeSearchedByTheCounterPartOfASpecialCharacter()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Track can be searching by title", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Tracks can be searched by the counter part of a special character", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 3
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -114,7 +116,7 @@ this.ScenarioInitialize(scenarioInfo);
 await testRunner.GivenAsync("All data scripts", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 5
-await testRunner.WhenAsync("searching for Piano", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+await testRunner.WhenAsync("searching for S10 & BLOF", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
                             "Id",
@@ -122,22 +124,79 @@ await testRunner.WhenAsync("searching for Piano", ((string)(null)), ((global::Re
                             "Artist",
                             "Recorded Year"});
                 table7.AddRow(new string[] {
+                            "4902",
+                            "Laat Me Los",
+                            "S10 & BLØF",
+                            "2022"});
+#line 6
+await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), table7, "Then ");
+#line hidden
+#line 9
+await testRunner.WhenAsync("searching for /\\", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
+                            "Id",
+                            "Title",
+                            "Artist",
+                            "Recorded Year"});
+                table8.AddRow(new string[] {
+                            "4056",
+                            "Sun Is shining",
+                            "Axwell Λ Ingrosso",
+                            "2015"});
+#line 10
+await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), table8, "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Track can be searching by title")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Search")]
+        public async System.Threading.Tasks.Task TrackCanBeSearchingByTitle()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Track can be searching by title", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 15
+await testRunner.GivenAsync("All data scripts", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 16
+await testRunner.WhenAsync("searching for Piano", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
+                            "Id",
+                            "Title",
+                            "Artist",
+                            "Recorded Year"});
+                table9.AddRow(new string[] {
                             "2134",
                             "My old piano",
                             "Diana Ross",
                             "1980"});
-                table7.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "2358",
                             "Piano Man",
                             "Billy Joel",
                             "1974"});
-                table7.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "3558",
                             "Worn Down Piano",
                             "Mark & Clark Band",
                             "1977"});
-#line 6
-await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), table7, "Then ");
+#line 17
+await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), table9, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -151,7 +210,7 @@ await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), 
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Tracks can be searching by artist", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 12
+#line 23
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -161,24 +220,24 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 13
+#line 24
 await testRunner.GivenAsync("All data scripts", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 14
+#line 25
 await testRunner.WhenAsync("searching for Soleil", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table10 = new global::Reqnroll.Table(new string[] {
                             "Id",
                             "Title",
                             "Artist",
                             "Recorded Year"});
-                table8.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "119",
                             "Alegria",
                             "Cirque du Soleil",
                             "1997"});
-#line 15
-await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), table8, "Then ");
+#line 26
+await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), table10, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -192,7 +251,7 @@ await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), 
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Track can be searched by their full RecordedYear", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 19
+#line 30
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -202,24 +261,24 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 20
+#line 31
 await testRunner.GivenAsync("All data scripts", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 21
+#line 32
 await testRunner.WhenAsync("searching for 1954", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table11 = new global::Reqnroll.Table(new string[] {
                             "Id",
                             "Title",
                             "Artist",
                             "Recorded Year"});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "3468",
                             "White Christmas",
                             "Bing Crosby",
                             "1954"});
-#line 22
-await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), table9, "Then ");
+#line 33
+await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), table11, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -233,7 +292,7 @@ await testRunner.ThenAsync("the following tracks are found:", ((string)(null)), 
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Searching track by their RecordedYear are only found by searching the full year", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 26
+#line 37
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -243,13 +302,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 27
+#line 38
 await testRunner.GivenAsync("All data scripts", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 28
+#line 39
 await testRunner.WhenAsync("searching for 54", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 29
+#line 40
 await testRunner.ThenAsync("the track White Christmas is not found", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -264,7 +323,7 @@ await testRunner.ThenAsync("the track White Christmas is not found", ((string)(n
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Searching will have a result cap of 100", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 31
+#line 42
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -274,13 +333,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 32
+#line 43
 await testRunner.GivenAsync("All data scripts", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 33
+#line 44
 await testRunner.WhenAsync("searching for a", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 34
+#line 45
 await testRunner.ThenAsync("the results contain 100 items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -295,7 +354,7 @@ await testRunner.ThenAsync("the results contain 100 items", ((string)(null)), ((
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("An empty search querty give zero results", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 36
+#line 47
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -305,13 +364,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 37
+#line 48
 await testRunner.GivenAsync("All data scripts", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 38
+#line 49
 await testRunner.WhenAsync("searching without a query", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 39
+#line 50
 await testRunner.ThenAsync("the results contain 0 items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

@@ -19,9 +19,13 @@ public static class App
     public static void BeforeTestRun()
     {
         var services = new ServiceCollection()
-            .AddClientDatabase(new DirectoryInfo(Directory.GetCurrentDirectory()), "top2000_unittest.db")
-            .AddFeaturesWithSQLite()
-            ;
+            .AddTop2000Features(builder =>
+            {
+                builder
+                    .DatabaseDirectory(Directory.GetCurrentDirectory())
+                    .DatabaseName("top2000_unittest.db")
+                    .EnableOnlineUpdates();
+            });
 
         ServiceProvider = services.BuildServiceProvider();
     }
