@@ -8,7 +8,7 @@
     <IsPackable>true</IsPackable>
     <Deterministic>true</Deterministic>
     <PackageId>RickNeeftDevelopment.Top2000App.Features.SQLite</PackageId>
-    <Description>Top 2000 Features package using the SQLite package </Description>
+    <Description>Top 2000 Features package using the SQLite database</Description>
     <Copyright>Copyright (c) Rick Neeft Development 2024</Copyright>
     <PackageProjectUrl>https://github.com/Top2000app/data</PackageProjectUrl>
     <Version>2.0.0</Version>
