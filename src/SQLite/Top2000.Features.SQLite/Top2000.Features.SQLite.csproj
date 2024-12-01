@@ -11,7 +11,7 @@
     <Description>Top 2000 Features package using the SQLite package </Description>
     <Copyright>Copyright (c) Rick Neeft Development 2024</Copyright>
     <PackageProjectUrl>https://github.com/Top2000app/data</PackageProjectUrl>
-    <Version>1.1.1</Version>
+    <Version>2.0.0</Version>
     <Authors>Rick Neeft</Authors>
     <Product>Top2000App</Product>
     <PackageIcon>nugeticon.png</PackageIcon>

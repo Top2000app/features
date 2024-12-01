@@ -164,18 +164,18 @@ await testRunner.WhenAsync("the track information feature is executed for TrackI
 #line 13
 await testRunner.ThenAsync("the title is \"Hurt\" from \'Johnny Cash\' which is recorded in the year 2003", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-                global::Reqnroll.Table table10 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table12 = new global::Reqnroll.Table(new string[] {
                             "Edition"});
-                table10.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "2002"});
-                table10.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "2001"});
-                table10.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "2000"});
-                table10.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "1999"});
 #line 14
-await testRunner.AndAsync("the following years are listed as \'NotAvailable\'", ((string)(null)), table10, "And ");
+await testRunner.AndAsync("the following years are listed as \'NotAvailable\'", ((string)(null)), table12, "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -211,22 +211,22 @@ await testRunner.WhenAsync("the track information feature is executed for TrackI
 #line 24
 await testRunner.ThenAsync("the title is \"Hurt\" from \'Johnny Cash\' which is recorded in the year 2003", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-                global::Reqnroll.Table table11 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table13 = new global::Reqnroll.Table(new string[] {
                             "Edition"});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "2003"});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "2004"});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "2005"});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "2006"});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "2007"});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "2008"});
 #line 25
-await testRunner.AndAsync("the following years are listed as \'NotListed\'", ((string)(null)), table11, "And ");
+await testRunner.AndAsync("the following years are listed as \'NotListed\'", ((string)(null)), table13, "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -340,29 +340,29 @@ await testRunner.WhenAsync("the track information feature is executed for TrackI
 #line 49
 await testRunner.ThenAsync("the title is \"Killer Queen\" from \'Queen\' which is recorded in the year 1974", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-                global::Reqnroll.Table table12 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
                             "Edition",
                             "Offset"});
-                table12.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "2000",
                             "33"});
-                table12.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "2002",
                             "19"});
-                table12.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "2008",
                             "262"});
-                table12.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "2011",
                             "85"});
-                table12.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "2017",
                             "9"});
-                table12.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "2018",
                             "222"});
 #line 50
-await testRunner.AndAsync("the following years are listed as \'Increased\'", ((string)(null)), table12, "And ");
+await testRunner.AndAsync("the following years are listed as \'Increased\'", ((string)(null)), table14, "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -400,59 +400,59 @@ await testRunner.WhenAsync("the track information feature is executed for TrackI
 #line 62
 await testRunner.ThenAsync("the title is \"Killer Queen\" from \'Queen\' which is recorded in the year 1974", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-                global::Reqnroll.Table table13 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table15 = new global::Reqnroll.Table(new string[] {
                             "Edition",
                             "Offset"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2001",
                             "27"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2003",
                             "1"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2004",
                             "30"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2005",
                             "45"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2006",
                             "27"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2007",
                             "255"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2009",
                             "7"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2010",
                             "76"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2012",
                             "13"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2013",
                             "27"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2014",
                             "18"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2015",
                             "10"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2016",
                             "3"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2019",
                             "18"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2020",
                             "25"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2020",
                             "38"});
 #line 63
-await testRunner.AndAsync("the following years are listed as \'Decreased\'", ((string)(null)), table13, "And ");
+await testRunner.AndAsync("the following years are listed as \'Decreased\'", ((string)(null)), table15, "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -491,17 +491,17 @@ await testRunner.WhenAsync("the track information feature is executed for TrackI
 await testRunner.ThenAsync(("the title is \"Nothing Else Matters\" from \'Metallica\' which is recorded in the yea" +
                         "r 1992"), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table16 = new global::Reqnroll.Table(new string[] {
                             "Edition",
                             "Offset"});
-                table14.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "2017",
                             "0"});
-                table14.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "2012",
                             "0"});
 #line 86
-await testRunner.AndAsync("the following years are listed as \'Unchanged\'", ((string)(null)), table14, "And ");
+await testRunner.AndAsync("the following years are listed as \'Unchanged\'", ((string)(null)), table16, "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

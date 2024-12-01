@@ -23,21 +23,21 @@ public class SearchTrackRequestHandler : IRequestHandler<SearchTrackRequest, Lis
             {
                 var sql = "SELECT Id, Title, Artist, RecordedYear, Listing.Position AS Position " +
                     "FROM Track " +
-                    "LEFT JOIN Listing ON Track.Id = Listing.TrackId AND Listing.Edition = 2023 " +
+                    "LEFT JOIN Listing ON Track.Id = Listing.TrackId AND Listing.Edition = ? " +
                     "WHERE RecordedYear = ?" +
                     "LIMIT 100";
 
-                results = await connection.QueryAsync<SearchedTrack>(sql, year);
+                results = await connection.QueryAsync<SearchedTrack>(sql, request.LatestYear, year);
             }
             else
             {
                 var sql = "SELECT Id, Title, Artist, RecordedYear, Listing.Position AS Position " +
                     "FROM Track " +
-                    "LEFT JOIN Listing ON Track.Id = Listing.TrackId AND Listing.Edition = 2023 " +
-                    "WHERE (Title LIKE ?) OR (Artist LIKE ?)" +
+                    "LEFT JOIN Listing ON Track.Id = Listing.TrackId AND Listing.Edition = ? " +
+                    "WHERE (Title LIKE ?) OR (Artist LIKE ?) OR (SearchTitle LIKE ?) OR (SearchArtist LIKE ?)" +
                     "LIMIT 100";
 
-                results = await connection.QueryAsync<SearchedTrack>(sql, $"%{request.QueryString}%", $"%{request.QueryString}%");
+                results = await connection.QueryAsync<SearchedTrack>(sql,request.LatestYear, $"%{request.QueryString}%", $"%{request.QueryString}%", $"%{request.QueryString}%", $"%{request.QueryString}%");
             }
         }
 

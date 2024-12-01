@@ -1,5 +1,16 @@
 ﻿Feature: Search
 
+Scenario: Tracks can be searched by the counter part of a special character
+Given All data scripts
+When searching for S10 & BLOF
+Then the following tracks are found:
+| Id   | Title       | Artist     | Recorded Year |
+| 4902 | Laat Me Los | S10 & BLØF | 2022          |
+When searching for /\
+Then the following tracks are found:
+| Id   | Title          | Artist            | Recorded Year |
+| 4056 | Sun Is shining | Axwell Λ Ingrosso | 2015          |
+
 Scenario: Track can be searching by title
 Given All data scripts
 When searching for Piano
