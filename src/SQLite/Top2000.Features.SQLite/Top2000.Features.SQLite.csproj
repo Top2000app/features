@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.4.1" />
-    <PackageReference Include="RickNeeftDevelopment.Top2000App.Data" Version="1.3.1" />
+    <PackageReference Include="RickNeeftDevelopment.Top2000App.Data" Version="2.0.0" />
     <PackageReference Include="RickNeeftDevelopment.Top2000App.Features" Version="1.1.0" />
   </ItemGroup>
 

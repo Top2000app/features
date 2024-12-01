@@ -23,11 +23,13 @@ namespace Top2000.Features.Specs.Features
     public partial class TrackInformationFeature
     {
         
-        private static global::Reqnroll.ITestRunner testRunner;
+        private global::Reqnroll.ITestRunner testRunner;
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
         private static string[] featureTags = ((string[])(null));
+        
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "TrackInformation", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
 #line 1 "TrackInformation.feature"
 #line hidden
@@ -47,26 +49,25 @@ namespace Top2000.Features.Specs.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static async System.Threading.Tasks.Task FeatureSetupAsync(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = global::Reqnroll.TestRunnerManager.GetTestRunnerForAssembly();
-            global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "TrackInformation", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
-            await testRunner.OnFeatureStartAsync(featureInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute(Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupBehavior.EndOfClass)]
         public static async System.Threading.Tasks.Task FeatureTearDownAsync()
         {
-            await testRunner.OnFeatureEndAsync();
-            global::Reqnroll.TestRunnerManager.ReleaseTestRunner(testRunner);
-            testRunner = null;
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public async System.Threading.Tasks.Task TestInitializeAsync()
         {
+            testRunner = global::Reqnroll.TestRunnerManager.GetTestRunnerForAssembly(featureHint: featureInfo);
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "TrackInformation")))
+                        && (testRunner.FeatureContext.FeatureInfo.Equals(featureInfo) == false)))
             {
-                await global::Top2000.Features.Specs.Features.TrackInformationFeature.FeatureSetupAsync(null);
+                await testRunner.OnFeatureEndAsync();
+            }
+            if ((testRunner.FeatureContext == null))
+            {
+                await testRunner.OnFeatureStartAsync(featureInfo);
             }
         }
         
@@ -74,6 +75,7 @@ namespace Top2000.Features.Specs.Features
         public async System.Threading.Tasks.Task TestTearDownAsync()
         {
             await testRunner.OnScenarioEndAsync();
+            global::Reqnroll.TestRunnerManager.ReleaseTestRunner(testRunner);
         }
         
         public void ScenarioInitialize(global::Reqnroll.ScenarioInfo scenarioInfo)
@@ -268,15 +270,15 @@ await testRunner.AndAsync("the listing 2009 is listed as \'New\'", ((string)(nul
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Tracks that are listed again but was not in the previous edition the status is li" +
-            "sted as Back")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(("Tracks that are listed again but was not in the previous edition the status is li" +
+            "sted as Back"))]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "TrackInformation")]
         public async System.Threading.Tasks.Task TracksThatAreListedAgainButWasNotInThePreviousEditionTheStatusIsListedAsBack()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Tracks that are listed again but was not in the previous edition the status is li" +
-                    "sted as Back", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo(("Tracks that are listed again but was not in the previous edition the status is li" +
+                    "sted as Back"), null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 40
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -307,15 +309,15 @@ await testRunner.AndAsync("the listing 2011 is listed as \'Back\'", ((string)(nu
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Tracks that are higher on the list than previous edition are listed are Increased" +
-            " and a offset is indicating the delta")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(("Tracks that are higher on the list than previous edition are listed are Increased" +
+            " and a offset is indicating the delta"))]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "TrackInformation")]
         public async System.Threading.Tasks.Task TracksThatAreHigherOnTheListThanPreviousEditionAreListedAreIncreasedAndAOffsetIsIndicatingTheDelta()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Tracks that are higher on the list than previous edition are listed are Increased" +
-                    " and a offset is indicating the delta", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo(("Tracks that are higher on the list than previous edition are listed are Increased" +
+                    " and a offset is indicating the delta"), null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 46
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -367,15 +369,15 @@ await testRunner.AndAsync("the following years are listed as \'Increased\'", ((s
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Tracks that are lower on the list than previous edition are listed are Decreased " +
-            "and a offset is indicating the delta")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(("Tracks that are lower on the list than previous edition are listed are Decreased " +
+            "and a offset is indicating the delta"))]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "TrackInformation")]
         public async System.Threading.Tasks.Task TracksThatAreLowerOnTheListThanPreviousEditionAreListedAreDecreasedAndAOffsetIsIndicatingTheDelta()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Tracks that are lower on the list than previous edition are listed are Decreased " +
-                    "and a offset is indicating the delta", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo(("Tracks that are lower on the list than previous edition are listed are Decreased " +
+                    "and a offset is indicating the delta"), null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 59
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -457,15 +459,15 @@ await testRunner.AndAsync("the following years are listed as \'Decreased\'", ((s
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Tracks that haven\'t change position since the previous edition are listed as Unch" +
-            "anged")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(("Tracks that haven\'t change position since the previous edition are listed as Unch" +
+            "anged"))]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "TrackInformation")]
         public async System.Threading.Tasks.Task TracksThatHaventChangePositionSinceThePreviousEditionAreListedAsUnchanged()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Tracks that haven\'t change position since the previous edition are listed as Unch" +
-                    "anged", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo(("Tracks that haven\'t change position since the previous edition are listed as Unch" +
+                    "anged"), null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 82
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -486,8 +488,8 @@ await testRunner.GivenAsync("the client database is created", ((string)(null)), 
 await testRunner.WhenAsync("the track information feature is executed for TrackId 2218", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 85
-await testRunner.ThenAsync("the title is \"Nothing Else Matters\" from \'Metallica\' which is recorded in the yea" +
-                        "r 1992", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+await testRunner.ThenAsync(("the title is \"Nothing Else Matters\" from \'Metallica\' which is recorded in the yea" +
+                        "r 1992"), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
                 global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
                             "Edition",
@@ -506,15 +508,15 @@ await testRunner.AndAsync("the following years are listed as \'Unchanged\'", ((s
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("\'Since release\' is the statistic that shows how many times the tracks could have " +
-            "been listed")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(("\'Since release\' is the statistic that shows how many times the tracks could have " +
+            "been listed"))]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "TrackInformation")]
         public async System.Threading.Tasks.Task SinceReleaseIsTheStatisticThatShowsHowManyTimesTheTracksCouldHaveBeenListed()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("\'Since release\' is the statistic that shows how many times the tracks could have " +
-                    "been listed", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo(("\'Since release\' is the statistic that shows how many times the tracks could have " +
+                    "been listed"), null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 91
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -659,15 +661,13 @@ await testRunner.AndAsync("the Lastest position is number 33 in 2023", ((string)
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("First position shows the position of the first edition where the track was listed" +
-            "")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("First position shows the position of the first edition where the track was listed")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "TrackInformation")]
         public async System.Threading.Tasks.Task FirstPositionShowsThePositionOfTheFirstEditionWhereTheTrackWasListed()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("First position shows the position of the first edition where the track was listed" +
-                    "", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("First position shows the position of the first edition where the track was listed", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 116
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
