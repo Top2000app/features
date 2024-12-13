@@ -101,15 +101,13 @@ namespace Top2000.Features.Specs.Features
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(("All editions, except for the last, contains 2000 positions starting with 1 and en" +
-            "ding with 2000"))]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("All editions contains 2000 positions starting with 1 and ending with 2000")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Top2000Data")]
-        public async System.Threading.Tasks.Task AllEditionsExceptForTheLastContains2000PositionsStartingWith1AndEndingWith2000()
+        public async System.Threading.Tasks.Task AllEditionsContains2000PositionsStartingWith1AndEndingWith2000()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo(("All editions, except for the last, contains 2000 positions starting with 1 and en" +
-                    "ding with 2000"), null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("All editions contains 2000 positions starting with 1 and ending with 2000", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -127,8 +125,7 @@ await this.FeatureBackgroundAsync();
 await testRunner.GivenAsync("the client database is created", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 9
-await testRunner.ThenAsync(("except for the last edition, the listing table contains 2000 tracks for each edit" +
-                        "ion ranging from 1 to 2000"), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+await testRunner.ThenAsync("the listing table contains 2000 tracks for each edition ranging from 1 to 2000", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -162,7 +159,7 @@ await testRunner.GivenAsync("the client database is created", ((string)(null)), 
 await testRunner.WhenAsync("the latest edition is queried", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 14
-await testRunner.ThenAsync("the latest edition contains either 10 or 2000 or 2500 items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+await testRunner.ThenAsync("the latest edition contains either 10 or 2000 items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
