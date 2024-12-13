@@ -67,6 +67,7 @@ Then the UTC Statdate is as follow:
 | 2020 | 2020-12-24T23:00:00 |
 | 2021 | 2021-12-24T23:00:00 |
 | 2022 | 2022-12-24T23:00:00 |
+| 2024 | 2024-12-24T23:00:00 |
 
 Scenario: The List of 2023 started earlier than usual because it was the 25 edition
 Given All data scripts

@@ -36,18 +36,19 @@ public class Top2000DataSteps
         await update.RunAsync(assemblySource);
     }
 
-    [Then(@"except for the last edition, the listing table contains 2000 tracks for each edition ranging from 1 to 2000")]
+    [Then(@"the listing table contains 2000 tracks for each edition ranging from 1 to 2000")]
     public async Task ThenThePositionTableContainsTracksForEachEditionRangingFromTo()
     {
         var sql = App.GetService<SQLiteAsyncConnection>();
         var lists = (await sql.Table<Listing>().ToListAsync())
+            .Where(x => x.Edition != 2023)
             .GroupBy(x => x.Edition)
             .OrderBy(x => x.Key)
             .ToList();
 
         var expected = Enumerable.Range(1, 2000);
 
-        for (var i = 0; i < lists.Count - 2; i++)
+        for (var i = 0; i < lists.Count -1 ; i++)
         {
             var yearPositions = lists[i].Select(x => x.Position).OrderBy(x => x);
             yearPositions.Should().BeEquivalentTo(expected);
@@ -94,10 +95,10 @@ public class Top2000DataSteps
             .Last();
     }
 
-    [Then("the latest edition contains either {int} or {int} or {int} items")]
-    public void ThenTheLatestEditionContainsEitherOrOrItems(int p0, int p1, int p2)
+    [Then("the latest edition contains either {int} or {int} items")]
+    public void ThenTheLatestEditionContainsEitherOrOrItems(int p0, int p1)
     {
-        latestEdition.Count().Should().BeOneOf(p0, p1, p2);
+        latestEdition.Count().Should().BeOneOf(p0, p1);
     }
 
     [Then(@"for each track in the listing table the PlayDateAndTime is the same to the previous track or has incremented by one hour")]

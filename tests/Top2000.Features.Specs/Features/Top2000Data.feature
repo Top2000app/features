@@ -4,14 +4,14 @@ Background: Data for the Top2000 app is stored in SQL scripts inside the `Data.S
 
 On the offcial Top2000 website (www.top2000.nl) people can choose their top tracks for the Top2000. After the voting week the first 10 tracks are published. A few days before the show starts the full list is published. 
 
-Scenario: All editions, except for the last, contains 2000 positions starting with 1 and ending with 2000
+Scenario: All editions contains 2000 positions starting with 1 and ending with 2000
 Given the client database is created
-Then except for the last edition, the listing table contains 2000 tracks for each edition ranging from 1 to 2000
+Then the listing table contains 2000 tracks for each edition ranging from 1 to 2000
 
 Scenario: The last edition can either have 10 or 2000 tracks
 Given the client database is created
 When the latest edition is queried
-Then the latest edition contains either 10 or 2000 or 2500 items
+Then the latest edition contains either 10 or 2000 items
 
 Scenario: The playtime of each track is either the same to the last track or increment by one hour
 Given the client database is created

@@ -419,6 +419,9 @@ await testRunner.WhenAsync("the feature is executed", ((string)(null)), ((global
                 table5.AddRow(new string[] {
                             "2022",
                             "2022-12-24T23:00:00"});
+                table5.AddRow(new string[] {
+                            "2024",
+                            "2024-12-24T23:00:00"});
 #line 65
 await testRunner.ThenAsync("the UTC Statdate is as follow:", ((string)(null)), table5, "Then ");
 #line hidden
@@ -434,7 +437,7 @@ await testRunner.ThenAsync("the UTC Statdate is as follow:", ((string)(null)), t
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("The List of 2023 started earlier than usual because it was the 25 edition", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 71
+#line 72
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -444,10 +447,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 72
+#line 73
 await testRunner.GivenAsync("All data scripts", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 73
+#line 74
 await testRunner.WhenAsync("the feature is executed", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
@@ -456,7 +459,7 @@ await testRunner.WhenAsync("the feature is executed", ((string)(null)), ((global
                 table6.AddRow(new string[] {
                             "2023",
                             "2023-12-11T09:00:00"});
-#line 74
+#line 75
 await testRunner.ThenAsync("the UTC Statdate is as follow:", ((string)(null)), table6, "Then ");
 #line hidden
             }
