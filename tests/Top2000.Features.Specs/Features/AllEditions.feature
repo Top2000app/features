@@ -18,8 +18,8 @@ Then the Start- and EndDateTime is in local time
 Scenario: The first editions started at the start of boxing day (CET)
 Given All data scripts
 When the feature is executed
-Then the UTC Statdate is as follow:
-| Year | UTC Startdate       |
+Then the UTC Start date is as follow:
+| Year | UTC Start date      |
 | 1999 | 1999-12-25T23:00:00 |
 | 2001 | 2001-12-25T23:00:00 |
 | 2002 | 2002-12-25T23:00:00 |
@@ -33,8 +33,8 @@ Then the UTC Statdate is as follow:
 Scenario: As from 2009 the Top2000 starts at first christmas day at noon (CET)
 Given All data scripts
 When the feature is executed
-Then the UTC Statdate is as follow:
-| Year | UTC Startdate       |
+Then the UTC Start date is as follow:
+| Year | UTC Start date       |
 | 2009 | 2009-12-25T11:00:00 |
 | 2010 | 2010-12-25T11:00:00 |
 | 2011 | 2011-12-25T11:00:00 |
@@ -45,8 +45,8 @@ Then the UTC Statdate is as follow:
 Scenario: As from 2015 the Top2000 starts three hours earlier
 Given All data scripts
 When the feature is executed
-Then the UTC Statdate is as follow:
-| Year | UTC Startdate       |
+Then the UTC Start date is as follow:
+| Year | UTC Start date       |
 | 2015 | 2015-12-25T08:00:00 |
 | 2016 | 2016-12-25T08:00:00 |
 | 2017 | 2017-12-25T08:00:00 |
@@ -55,15 +55,15 @@ Then the UTC Statdate is as follow:
 Scenario: In 2019 the Top2000 start at 08:00
 Given All data scripts
 When the feature is executed
-Then the UTC Statdate is as follow:
-| Year | UTC Startdate       |
+Then the UTC Start date is as follow:
+| Year | UTC Start date      |
 | 2019 | 2019-12-25T07:00:00 |
 
 Scenario: As from 2020 the Top2000 starts at the start of boxing day (CET)
 Given All data scripts
 When the feature is executed
-Then the UTC Statdate is as follow:
-| Year | UTC Startdate       |
+Then the UTC Stat date is as follow:
+| Year | UTC Start date       |
 | 2020 | 2020-12-24T23:00:00 |
 | 2021 | 2021-12-24T23:00:00 |
 | 2022 | 2022-12-24T23:00:00 |
@@ -72,6 +72,6 @@ Then the UTC Statdate is as follow:
 Scenario: The List of 2023 started earlier than usual because it was the 25 edition
 Given All data scripts
 When the feature is executed
-Then the UTC Statdate is as follow:
-| Year | UTC Startdate       |
+Then the UTC Start date is as follow:
+| Year | UTC Start date       |
 | 2023 | 2023-12-11T09:00:00 |

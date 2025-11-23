@@ -35,7 +35,7 @@ public class AllEditionsSteps
 
         foreach (var edition in editions)
         {
-            edition.Year.Should().BeLessOrEqualTo(firstEdition.Year);
+            edition.Year.Should().BeLessThanOrEqualTo(firstEdition.Year);
         }
     }
 
@@ -60,7 +60,7 @@ public class AllEditionsSteps
     }
 
     [Then(@"the UTC Statdate is as follow:")]
-    public void ThenTheUTCStatdateIsAsFollow(Table table)
+    public void Then_TheUTCStartdateIsAsFollow(Table table)
     {
         var items = table.CreateSet<YearTimeCombo>();
 
