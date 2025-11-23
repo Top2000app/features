@@ -473,7 +473,7 @@ await testRunner.WhenAsync("the feature is executed", ((string)(null)), ((global
                             "2024",
                             "2024-12-24T23:00:00"});
 #line 65
-await testRunner.ThenAsync("the UTC Stat date is as follow:", ((string)(null)), table5, "Then ");
+await testRunner.ThenAsync("the UTC Start date is as follow:", ((string)(null)), table5, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

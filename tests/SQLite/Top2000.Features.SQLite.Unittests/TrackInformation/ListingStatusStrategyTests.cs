@@ -18,7 +18,7 @@ public class ListingStatusStrategyTests
     {
         var listing = new ListingInformation { Edition = 2000 };
 
-        sut.Determine(listing).Should().Be(ListingStatus.NotAvailable);
+        sut.Determine(listing).ShouldBe(ListingStatus.NotAvailable);
     }
 
     [TestMethod]
@@ -26,7 +26,7 @@ public class ListingStatusStrategyTests
     {
         var listing = new ListingInformation { Edition = 2002 };
 
-        sut.Determine(listing).Should().Be(ListingStatus.NotListed);
+        sut.Determine(listing).ShouldBe(ListingStatus.NotListed);
     }
 
     [TestMethod]
@@ -34,7 +34,7 @@ public class ListingStatusStrategyTests
     {
         var listing = new ListingInformation { Edition = 2002, Position = 12 };
 
-        sut.Determine(listing).Should().Be(ListingStatus.New);
+        sut.Determine(listing).ShouldBe(ListingStatus.New);
     }
 
     [TestMethod]
@@ -52,7 +52,7 @@ public class ListingStatusStrategyTests
 
         var listing = new ListingInformation { Edition = 2004, Position = 12 };
 
-        sut.Determine(listing).Should().Be(ListingStatus.Back);
+        sut.Determine(listing).ShouldBe(ListingStatus.Back);
     }
 
     [TestMethod]
@@ -68,7 +68,7 @@ public class ListingStatusStrategyTests
         .ForEach(x => sut.Determine(x));
 
         var current = new ListingInformation { Edition = 2003, Position = 2, Offset = 0 };
-        sut.Determine(current).Should().Be(ListingStatus.Unchanged);
+        sut.Determine(current).ShouldBe(ListingStatus.Unchanged);
     }
 
     [TestMethod]
@@ -84,7 +84,7 @@ public class ListingStatusStrategyTests
       .ForEach(x => sut.Determine(x));
 
         var current = new ListingInformation { Edition = 2003, Position = 1, Offset = -1 };
-        sut.Determine(current).Should().Be(ListingStatus.Increased);
+        sut.Determine(current).ShouldBe(ListingStatus.Increased);
     }
 
     [TestMethod]
@@ -100,6 +100,6 @@ public class ListingStatusStrategyTests
       .ForEach(x => sut.Determine(x));
 
         var current = new ListingInformation { Edition = 2003, Position = 3, Offset = 1 };
-        sut.Determine(current).Should().Be(ListingStatus.Decreased);
+        sut.Determine(current).ShouldBe(ListingStatus.Decreased);
     }
 }

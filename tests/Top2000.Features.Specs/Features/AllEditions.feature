@@ -62,8 +62,8 @@ Then the UTC Start date is as follow:
 Scenario: As from 2020 the Top2000 starts at the start of boxing day (CET)
 Given All data scripts
 When the feature is executed
-Then the UTC Stat date is as follow:
-| Year | UTC Start date       |
+Then the UTC Start date is as follow:
+| Year | UTC Start date      |
 | 2020 | 2020-12-24T23:00:00 |
 | 2021 | 2021-12-24T23:00:00 |
 | 2022 | 2022-12-24T23:00:00 |

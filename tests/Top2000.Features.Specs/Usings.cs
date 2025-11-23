@@ -2,4 +2,4 @@
 global using FluentAssertions;
 global using MediatR;
 
-[assembly: Parallelize]
+[assembly: DoNotParallelize]
