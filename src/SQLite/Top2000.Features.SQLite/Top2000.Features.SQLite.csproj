@@ -10,8 +10,8 @@
     <PackageId>RickNeeftDevelopment.Top2000App.Features.SQLite</PackageId>
     <Description>Top 2000 Features package using the SQLite database</Description>
     <Copyright>Copyright (c) Rick Neeft Development 2024</Copyright>
-    <PackageProjectUrl>https://github.com/Top2000app/data</PackageProjectUrl>
-    <Version>2.1.0</Version>
+    <PackageProjectUrl>https://github.com/Top2000app/features</PackageProjectUrl>
+    <Version>2.2.0</Version>
     <Authors>Rick Neeft</Authors>
     <Product>Top2000App</Product>
     <PackageIcon>nugeticon.png</PackageIcon>

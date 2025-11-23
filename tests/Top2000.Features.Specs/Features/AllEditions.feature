@@ -73,5 +73,5 @@ Scenario: The List of 2023 started earlier than usual because it was the 25 edit
 Given All data scripts
 When the feature is executed
 Then the UTC Start date is as follow:
-| Year | UTC Start date       |
+| Year | UTC Start date      |
 | 2023 | 2023-12-11T09:00:00 |
