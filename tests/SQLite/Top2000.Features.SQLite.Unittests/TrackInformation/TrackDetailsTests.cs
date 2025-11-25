@@ -49,37 +49,37 @@ namespace Top2000.Features.SQLite.Unittests.TrackInformation
         [TestMethod]
         public void First_represents_the_first_time_the_track_was_listed()
         {
-            sut.First.Should().Be(listing2000);
+            sut.First.ShouldBe(listing2000);
         }
 
         [TestMethod]
         public void Highest_represents_the_first_highest_listing()
         {
-            sut.Highest.Should().Be(listing2001);
+            sut.Highest.ShouldBe(listing2001);
         }
 
         [TestMethod]
         public void Lowest_represents_the_latested_lowest_listing()
         {
-            sut.Lowest.Should().Be(listing2003);
+            sut.Lowest.ShouldBe(listing2003);
         }
 
         [TestMethod]
         public void Latest_represents_the_latest_listing()
         {
-            sut.Latest.Should().Be(listing2004);
+            sut.Latest.ShouldBe(listing2004);
         }
 
         [TestMethod]
         public void Appearences_shows_the_counts_of_listings()
         {
-            sut.Appearances.Should().Be(5);
+            sut.Appearances.ShouldBe(5);
         }
 
         [TestMethod]
         public void AppearancesPossible_shows_the_count_of_listings_possible_since_the_recorded_date()
         {
-            sut.AppearancesPossible.Should().Be(6);
+            sut.AppearancesPossible.ShouldBe(6);
         }
     }
 }
